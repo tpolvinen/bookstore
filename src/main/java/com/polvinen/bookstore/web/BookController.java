@@ -1,18 +1,20 @@
 package com.polvinen.bookstore.web;
 
-/**
- * Created by tatu on 06/02/17.
- */
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 import com.polvinen.bookstore.domain.Book;
 import com.polvinen.bookstore.domain.BookRepository;
+
+/**
+ * Created by tatu on 06/02/17.
+ */
 
 @Controller
 public class BookController {
@@ -47,6 +49,7 @@ public class BookController {
         return "redirect:booklist";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
         repository.delete(bookId);
