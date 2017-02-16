@@ -43,6 +43,11 @@ public class BookstoreApplication {
 			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
+
+			log.info("Fetch all USERS!");
+			for (User user : urepository.findAll()) {
+				log.info(user.toString());
+			}
 		};
 	}
 }

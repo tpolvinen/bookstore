@@ -80,4 +80,14 @@ public class User {
 		this.role = role;
 	}
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", passwordHash='" + passwordHash + '\'' +
+				", email='" + email + '\'' +
+				", role='" + role + '\'' +
+				'}';
+	}
 }
