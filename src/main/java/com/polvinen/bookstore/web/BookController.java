@@ -39,18 +39,21 @@ public class BookController {
         return "booklist";
     }
 
+    // Add new book
     @RequestMapping(value = "/add")
     public String addBook(Model model){
         model.addAttribute("book", new Book());
         return "addbook";
     }
 
+    // Save new book
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Book book){
         repository.save(book);
         return "redirect:booklist";
     }
 
+    // Delete book by id if authorized
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
@@ -58,7 +61,7 @@ public class BookController {
         return "redirect:../booklist";
     }
 
-    // RESTful service to get all students
+    // RESTful service to get all books
     @RequestMapping(value="/booksrest", method = RequestMethod.GET)
     public @ResponseBody List<Book> bookListRest() {
         return (List<Book>) repository.findAll();

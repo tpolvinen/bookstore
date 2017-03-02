@@ -32,7 +32,7 @@ public class Book {
     @Getter @Setter private Double price;
 
     //@ManyToOne
-    @JsonIgnore
+    // @JsonIgnore
 
     public Book() {}
 

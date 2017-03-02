@@ -25,6 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .authorizeRequests().antMatchers("/signup", "/saveuser").permitAll()
         .and()
+        .authorizeRequests().antMatchers("/api/**").permitAll()
+        .and()
         .authorizeRequests().anyRequest().authenticated()
         .and()
         .formLogin()
@@ -33,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll()
             .and()
         .logout()
-            .permitAll();
+            .permitAll()
+        .and()
+        .csrf().disable();
     }
 
     @Autowired
