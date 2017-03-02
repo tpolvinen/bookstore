@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // import java.math.BigDecimal;
 // import java.util.Currency; // see: http://www.javapractices.com/topic/TopicAction.do?Id=13
@@ -28,6 +30,9 @@ public class Book {
     @Getter @Setter private Integer year;
     @Getter @Setter private String isbn;
     @Getter @Setter private Double price;
+
+    //@ManyToOne
+    @JsonIgnore
 
     public Book() {}
 

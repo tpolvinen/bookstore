@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.polvinen.bookstore.domain.Book;
 import com.polvinen.bookstore.domain.BookRepository;
+import java.util.List;
 
 /**
  * Created by tatu on 06/02/17.
@@ -31,6 +32,7 @@ public class BookController {
         return "login";
     }
 
+    // Show all books
     @RequestMapping(value="/booklist", method=RequestMethod.GET)
     public String bookList(Model model) {
         model.addAttribute("books", repository.findAll());
@@ -54,5 +56,11 @@ public class BookController {
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
         repository.delete(bookId);
         return "redirect:../booklist";
+    }
+
+    // RESTful service to get all students
+    @RequestMapping(value="/books", method = RequestMethod.GET)
+    public @ResponseBody List<Book> bookListRest() {
+        return (List<Book>) repository.findAll();
     }
 }
