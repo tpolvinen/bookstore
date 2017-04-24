@@ -27,11 +27,16 @@ public class BookController {
 //        return "index";
 //    }
 
-    @RequestMapping(value="/login")
+    @RequestMapping(value="/login", method=RequestMethod.GET)
     public String login() {
         return "login";
     }
 
+  @RequestMapping(value = "/index", method=RequestMethod.GET)
+    public String index() {
+        return "index";
+  }
+    
     // Show all books
     @RequestMapping(value="/booklist", method=RequestMethod.GET)
     public String bookList(Model model) {
