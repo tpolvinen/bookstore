@@ -31,11 +31,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .formLogin()
             .loginPage("/login")
-            .defaultSuccessUrl("/booklist")
+            .defaultSuccessUrl("/index")
             .permitAll()
             .and()
         .logout()
             .permitAll()
+            .logoutSuccessUrl("/login")
         .and()
         .csrf().disable();
     }
